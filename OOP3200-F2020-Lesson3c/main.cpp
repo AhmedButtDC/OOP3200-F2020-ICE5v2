@@ -1,11 +1,8 @@
 #include <iomanip>
 #include <iostream>
-
 #include <vector>
-
 #include "GameObject.h"
 #include "Vector3D.h"
-
 
 static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int num = 2)
 {
@@ -24,7 +21,6 @@ static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int n
 		auto* gameObject = new GameObject(id, point);
 		game_objects.push_back(gameObject);
 	}
-
 }
 
 static void CompareGameObjects(GameObject* object1, GameObject* object2)
@@ -47,18 +43,27 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 	std::cout << object2->ToString() << std::endl;
 }
 
-
-
 int main()
 {
-	const Vector3D<float> point1(5.0f, 20.0f);
-	const Vector3D<float> point2(10.0f, 100.0f);
+	Vector2D point2d(200.0f, 300.0f);
 
-	std::cout << point1.ToString() << std::endl;
-	std::cout << point2.ToString() << std::endl;
+	Vector3D<int> point1;
+	Vector3D<float> point2;
+	Vector3D<float> point3(point2d);
+	Vector3D<uint8_t> point4("4", "5", "6");
 
+	std::cout << "Enter point1's Position (x, y, z): ";
+	std::cin >> point1;
 
+	std::cout << "Enter point2's Position (x, y, z): ";
+	std::cin >> point2;
 
+	std::cout << "---------------------------------------\n" << std::endl;
+
+	std::cout << point1 << std::endl;
+	std::cout << point2 << std::endl;
+	std::cout << point3 << std::endl;
+	std::cout << point4 << std::endl;
 
 	/*std::vector<GameObject*> gameObjects;
 
@@ -68,7 +73,6 @@ int main()
 	std::cout << "\n--------------------------------------------------------------" << std::endl;
 
 	BuildGameObjects(gameObjects, num_of_GO);
-
 
 	int index1;
 	std::cout << "What is the First Object index?: ";
